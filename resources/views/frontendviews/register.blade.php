@@ -206,7 +206,7 @@
                       <div class="col-lg-5 ms-auto">
                           <div class="form-group">
                               <label for="billing_phone_no">Billing Phone Number</label>
-                              <input type="tel"  name="billing_phone_no" class="form-control required" placeholder="Enter your phone number">
+                              <input  id="billing_phone_no" type="tel"  name="billing_phone_no" class="form-control required" placeholder="Enter your phone number">
                           </div>
                       </div>
                   </div>

@@ -110,11 +110,21 @@
             equalTo: "#billing_email_address"  
                
     },
+      school_phone_no: {
 
-    // school_phone_no: {matches:"[0-9]+",minlength:10, maxlength:10},
+     phoneUS: true
+},
+     personal_phone_no: {
 
-    // personal_phone_no: {matches:"[0-9]+",minlength:10, maxlength:10}
+      phoneUS: true
+},
+     billing_phone_no: {
 
+     phoneUS: true
+}
+
+
+    
     
 },
 
