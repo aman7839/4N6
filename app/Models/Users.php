@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Users extends Model
 {
     use HasFactory;
-    protected $table = 'user';
+    protected $table = 'users';
     protected $fillable = [
         'id',
         'user_name',
@@ -16,7 +16,7 @@ class Users extends Model
         'image',
         'school_email_address',
         'personal_email_address',
-        'head_coach_name',
+        'name',
         'school_phone_no',
         'school_name',
         'personal_phone_no',
@@ -29,7 +29,11 @@ class Users extends Model
         'billing_contact_name',
         'billing_email_address',
         'billing_phone_no',
-        'role',
+        'role_as',
+        
        ];
 
+       
+       
+     
 }

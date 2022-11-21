@@ -3,8 +3,8 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./"><img src="{{asset('images/fanatic_logo.svg')}}" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="{{asset('4n6/images/logo2.png')}}" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="{{asset('/public/images/fanatic_logo.svg')}}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="{{asset('/public/images/logo2.png')}}" alt="Logo"></a>
                 {{-- <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> --}}
             </div>
         </div>
@@ -88,25 +88,30 @@
                      <label for="image">Images</label>
                      <input type="file" name="image"  class="form-control" id="image" aria-describedby="emailHelp" >
        
-                   <img  width="30%" class="img-circle" src="{{asset('images/'. $user->image)}}">
+                   <img  width="30%" class="img-circle" src="{{asset('/public/images/'. $user->image)}}">
                  
                  </div> --}}
 
                 <div class="user-area dropdown float-right">
                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar rounded-circle" src="{{asset('images/'. Auth::user()->image)}}" alt="User Avatar">
+                        <img class="user-avatar rounded-circle" src="{{asset('/public/images/'. Auth::user()->image)}}" alt="User Avatar">
                     </a>
+                    
+                    {{-- <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="{{asset('/public/images/'. Auth::user()->image)}}" alt="User Avatar">
+                    </a> --}}
 
-                    <div class="user-menu dropdown-menu">
+
+                    {{-- <div class="user-menu dropdown-menu">
                         <a class="nav-link" href="{{ url('admin/editProfile/'.Auth::user()->id)}}"><i class="fa fa- user"></i>My Profile</a>
 
                         <a class="nav-link" href="{{ route('changePasswordGet') }}"><i class="fa fa- user"></i>Change Password </a>
 
                         {{-- <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a> --}}
 
-                        <a class="nav-link" href="{{url('admin/logout')}}"><i class="fa fa-power -off"></i>Logout</a>
+                        {{-- <a class="nav-link" href="{{url('admin/logout')}}"><i class="fa fa-power -off"></i>Logout</a>
                         
-                    </div>
+                    </div>  --}}
                 </div>
 
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\users_guide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Client\Response;
 
 class UsersGuideController extends Controller
 {
@@ -15,20 +16,19 @@ class UsersGuideController extends Controller
      */
     public function index()
     {   
-        $user = users_guide::paginate(3);
+        $document = users_guide::paginate(10);
         
-      
-        return view('admin.dashboard.usersGuide',compact('user'));
+        return view('admin.Documents.usersGuide',compact('document'));
     }
     public function addDocuments()
     {   
        
-        return view('admin.dashboard.adddocuments');
+        return view('admin.Documents.adddocuments');
     }
 
     /**
      * Show the form for creating a new resource.
-     *
+     
      * @return \Illuminate\Http\Response
      */
     public function saveDocuments(Request $request)
@@ -37,21 +37,21 @@ class UsersGuideController extends Controller
 
             'name' => 'required',
             
-            'image' => 'required|mimes:jpg,jpeg,png,gif,pdf|max:2048',
+            'image' => 'required|mimes:pdf|max:2048',
 
         ]);
-           $user = new users_guide;
+           $document = new users_guide;
 
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $imageName = time() . '-' . $file->getClientOriginalName();
             
-            $file->move('images/', $imageName);
+            $file->move('public/images/', $imageName);
 
-            $user->image =   $imageName;
-            $user->name =   $request->name;
-            $user->save();
-            if ($user) {
+            $document->image =   $imageName;
+            $document->name =   $request->name;
+            $document->save();
+            if ($document) {
                 return redirect('admin/documents')->with('success', 'Document Added Successfully');
             } else {
                 return redirect()->back()->with('error', 'Document Not Added');
@@ -61,9 +61,9 @@ class UsersGuideController extends Controller
     }
     public function editDocuments($id){
 
-        $user = users_guide::find($id);
+        $document = users_guide::find($id);
 
-        return view('admin.dashboard.editdocuments', compact('user'));
+        return view('admin.Documents.editdocuments', compact('document'));
     }
 
     
@@ -73,28 +73,28 @@ class UsersGuideController extends Controller
 
             'name' => 'required',
             
-            'image' => 'required|mimes:jpg,jpeg,png,gif,pdf|max:2048',
+            'image' => 'mimes:pdf|max:2048',
 
         ]);
       
-       $user = users_guide::find($id);
+       $document = users_guide::find($id);
 
-       $user->name =  $request->input('name');
+       $document->name =  $request->input('name');
        if ($request->hasfile('image')) {
-        $destination = 'images/' . $user->image;
+        $destination = 'public/images/' . $document->image;
         if (File::exists($destination)) {
             File::delete($destination);
         }
         $file = $request->file('image');
         $imageName = time() . '-' . $file->getClientOriginalName();
-        $file->move('images/', $imageName);
-        $user->image =   $imageName;
+        $file->move('public/images/', $imageName);
+        $document->image =   $imageName;
     }
-         $user->update();
+         $document->update();
 
 
 
-    return redirect()->back()->with('success', 'Document updated Successfully');
+    return redirect('admin/documents')->with('success', 'Document updated Successfully');
 
     }
 
@@ -106,9 +106,16 @@ class UsersGuideController extends Controller
      */
     public function deleteDocuments($id)
     { 
-            $user = users_guide::find($id);
-            $user->delete();
+            $document = users_guide::find($id);
+            $document->delete();
             return redirect()->back()->with('error', 'Document Deleted Successfully');
         
     }
+    
+    public function download($file){
+        $file_path = ('public/images/'.$file);
+        return response()->file( $file_path);
+    }
+    
+
 }

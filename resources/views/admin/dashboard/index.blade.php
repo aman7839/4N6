@@ -17,7 +17,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text">$<span class="count">23569</span></div>
-                                    <div class="stat-heading">Users</div>
+                                    <div class="stat-heading">Coaches</div>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">3435</span></div>
-                                    <div class="stat-heading">Links</div>
+                                    <div class="stat-heading">Students</div>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">349</span></div>
-                                    <div class="stat-heading">Documents</div>
+                                    <div class="stat-heading">Links</div>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                     <div class="stat-text"><span class="count">2986</span></div>
-                                    <div class="stat-heading">Speech Drama</div>
+                                    <div class="stat-heading">Documents</div>
                                 </div>
                             </div>
                         </div>
@@ -147,25 +147,25 @@
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
-                                            <th class="avatar">Avatar</th>
+                                            {{-- <th class="avatar">Avatar</th> --}}
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Product</th>
-                                            <th>Quantity</th>
+                                            <th>State</th>
+                                            <th>Links</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td class="serial">1.</td>
-                                            <td class="avatar">
+                                            {{-- <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{asset('4n6/images/avatar/1.jpg')}}" alt=""></a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td> #5469 </td>
                                             <td>  <span class="name">Louis Stanley</span> </td>
-                                            <td> <span class="product">iMax</span> </td>
+                                            <td> <span class="product">A</span> </td>
                                             <td><span class="count">231</span></td>
                                             <td>
                                                 <span class="badge badge-complete">Complete</span>
@@ -173,14 +173,14 @@
                                         </tr>
                                         <tr>
                                             <td class="serial">2.</td>
-                                            <td class="avatar">
+                                            {{-- <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{asset('4n6/images/avatar/2.jpg')}}" alt=""></a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td> #5468 </td>
                                             <td>  <span class="name">Gregory Dixon</span> </td>
-                                            <td> <span class="product">iPad</span> </td>
+                                            <td> <span class="product">B</span> </td>
                                             <td><span class="count">250</span></td>
                                             <td>
                                                 <span class="badge badge-complete">Complete</span>
@@ -188,14 +188,14 @@
                                         </tr>
                                         <tr>
                                             <td class="serial">3.</td>
-                                            <td class="avatar">
+                                            {{-- <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{asset('4n6/images/avatar/3.jpg')}}" alt=""></a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td> #5467 </td>
                                             <td>  <span class="name">Catherine Dixon</span> </td>
-                                            <td> <span class="product">SSD</span> </td>
+                                            <td> <span class="product">C</span> </td>
                                             <td><span class="count">250</span></td>
                                             <td>
                                                 <span class="badge badge-complete">Complete</span>
@@ -203,14 +203,14 @@
                                         </tr>
                                         <tr>
                                             <td class="serial">4.</td>
-                                            <td class="avatar">
+                                            {{-- <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{asset('4n6/images/avatar/4.jpg')}}" alt=""></a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td> #5466 </td>
                                             <td>  <span class="name">Mary Silva</span> </td>
-                                            <td> <span class="product">Magic Mouse</span> </td>
+                                            <td> <span class="product">D</span> </td>
                                             <td><span class="count">250</span></td>
                                             <td>
                                                 <span class="badge badge-pending">Pending</span>
@@ -218,14 +218,14 @@
                                         </tr>
                                         <tr class=" pb-0">
                                             <td class="serial">5.</td>
-                                            <td class="avatar pb-0">
+                                            {{-- <td class="avatar pb-0">
                                                 <div class="round-img">
                                                     <a href="#"><img class="rounded-circle" src="{{asset('4n6/images/avatar/6.jpg')}}" alt=""></a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                             <td> #5465 </td>
                                             <td>  <span class="name">Johnny Stephens</span> </td>
-                                            <td> <span class="product">Monitor</span> </td>
+                                            <td> <span class="product">E</span> </td>
                                             <td><span class="count">250</span></td>
                                             <td>
                                                 <span class="badge badge-complete">Complete</span>
@@ -326,7 +326,7 @@
                 </div><!-- /.card -->
             </div>
 
-            <div class="col-lg-6">
+            {{-- <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title box-title">Live Chat</h4>
@@ -383,7 +383,7 @@
                     </div> <!-- /.card-body -->
                 </div><!-- /.card -->
             </div>
-        </div>
+        </div> --}}
         <!-- /To Do and Live Chat -->
         <!-- Calender Chart Weather  -->
         <div class="row">
@@ -408,7 +408,7 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="card weather-box">
-                    <h4 class="weather-title box-title">Weather</h4>
+                    {{-- <h4 class="weather-title box-title">Weather</h4> --}}
                     <div class="card-body">
                         <div class="weather-widget">
                             <div id="weather-one" class="weather-one"></div>

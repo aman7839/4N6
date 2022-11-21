@@ -2,7 +2,7 @@
 
     @section('content')
 
-    <section class="cmn_header_section space" style="background-image:url('{{asset('4n61/images/contact_bg.png')}}') ;">
+    <section class="cmn_header_section space" style="background-image:url('{{asset('/public/4n61/images/contact_bg.jpg')}}') ;">
         <div class="custom_container">
             <h1>Contact Us</h1>
         </div>
@@ -25,23 +25,30 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="contact_image">
-                        <img src="{{asset('4n61/images/contact_image.png')}}" class="img-fluid" alt="contact image">
+                        <img src="{{asset('/public/4n61/images/contact_image.jpg')}}" class="img-fluid" alt="contact image">
                     </div>
                 </div>
                 <div class="col-md-5">
                         <div class="contact_form">
-                                <form action="">
+                                <form action="{{url('contactUS')}}" method="post">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="">Name</label>
-                                        <input type="text" name="" placeholder="Enter your name" class="form-control">
+                                        <input type="text" name="name" placeholder="Enter your name" class="form-control">
+                        <span class ="text-danger">@error('name'){{$message}} @enderror</span>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="">Email Address</label>
-                                        <input type="email" name="" placeholder="Enter your email" class="form-control">
+                                        <input type="email" name="email" placeholder="Enter your email" class="form-control">
+                        <span class ="text-danger">@error('email'){{$message}} @enderror</span>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="">Add Comment</label>
-                                        <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Add your comment here"></textarea>
+                                        <textarea name="description" class="form-control" id="" cols="30" rows="10" placeholder="Add your comment here"></textarea>
+                        <span class ="text-danger">@error('description'){{$message}} @enderror</span>
+
                                     </div>
                                     <div>
                                         <button type="submit" class="cmn_btn">Send</button>

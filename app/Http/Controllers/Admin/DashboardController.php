@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Response;
+
 
 
 
@@ -21,32 +24,44 @@ class DashboardController extends Controller
     public function login()
     {
 
-        return view('admin.dashboard.login');
+        return view('admin.Users.login');
     }
+    public function index()
+    {
 
+        return view('admin.dashboard.index');
+    }
+    
+    
+
+    
 
 
     public function loginAdmin(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+    {   $input = $request->all();
+        $this->validate($request, [
+            'user_name' => 'required',
+            'password' => 'required',
         ]);
         
-      
-        if (Auth::attempt($credentials)) {
+        $fieldType = filter_var($request->user_name, FILTER_VALIDATE_EMAIL) ? 'personal_email_address' : 'user_name';
+        if(auth()->attempt(array($fieldType => $input['user_name'], 'password' => $input['password']))){
+            
              $request->session()->regenerate();
        
 
-            return redirect()->intended('admin/users')->with('success', 'Welcome Admin');
-        }elseif ( Auth::check() && Auth::user()->role_as == false){
+            return redirect('admin/users')->with('success', 'Welcome Admin');
+        } 
 
-            return redirect()->back()->with('error', 'Access Denied');
+     
+          else{
+       
+
+            return redirect()->back()->with('error', 'Invalid credentials');
         }
         
-        else {
-            return redirect()->back()->with('error', 'Credentials not found');
-        }
+
+        
     }
 
 
@@ -54,16 +69,9 @@ class DashboardController extends Controller
 
             $user = user::find($id);
 
-            if($user){
-           
-        return view('admin.dashboard.editProfile',compact('user'));
     
-    }
-        else{
-
-            return redirect()->back();
-
-        }
+        return view('admin.Users.editProfile',compact('user'));
+    
 
 
      }
@@ -72,34 +80,43 @@ class DashboardController extends Controller
      public function updateProfile(Request $request, $id)
      {
 
- 
+        $user = user::find($id);
+        
         $request->validate([
-
-           'mobile' => 'required|numeric|digits:10',
+            'personal_phone_no'   =>  [
+                'numeric',
+                'required',
+                'digits:10',
+                 Rule::unique('users')->ignore($id),
+            ],
+            'email'   =>  [
+                'required',
+                 Rule::unique('users')->ignore($id),
+            ],
             
             'image' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
 
         ]);
  
  
-         $user = user::find($id);
         
  
          $user->name = $request->input('name');
          $user->email = $request->input('email');
          if ($request->hasfile('image')) {
-             $destination = 'images/' . $user->image;
+             $destination = 'public/images/' . $user->image;
              if (File::exists($destination)) {
                  File::delete($destination);
              }
              $file = $request->file('image');
              $imageName = time() . '-' . $file->getClientOriginalName();
-             $file->move('images/', $imageName);
+             $file->move('public/images/', $imageName);
              $user->image =   $imageName;
          }
 
-         $user->mobile = $request->input('mobile');
-         $user->location = $request->input('location');
+         $user->personal_phone_no = $request->input('personal_phone_no');
+         
+         $user->school_city = $request->input('school_city');
          $user->update();
         
         
@@ -110,14 +127,14 @@ class DashboardController extends Controller
 
         public function showChangePasswordGet() {
 
-        return view('admin.dashboard.changePassword');
+        return view('admin.Users.changePassword');
     }
 
          public function changePasswordPost(Request $request)
          {
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("error","Your current password does not matches with the password.");
+            return redirect()->back()->with("error","Your current password does not match with the password.");
         }
 
         if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
@@ -125,13 +142,14 @@ class DashboardController extends Controller
             return redirect()->back()->with("error","New Password cannot be same as your current password.");
         }
 
-          $request->validate([
+            $request->validate([
             'current-password' => 'required',
             'new-password' => 'required|string|min:4|confirmed',
         ]);
 
-        //Change Password
+        // Change Password
         $user = Auth::user();
+
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
@@ -140,42 +158,17 @@ class DashboardController extends Controller
 
 
 
-    // public function registeradmin(Request $request)
-    // {
-    //     $request->validate([
-    //         'email'=> 'required',
-    //         'password'=>'required',  
-    //        ]);
-
-    //        user::create([
-    //         'name'=>$request->name,
-    //         'email'=>$request->email,
-    //         'name'=>Hash::make($request->password)
-
-    //        ]);
-    //        if(Auth::attemt($request->only('email','password'))){
-    //         return view('admin.dashboard.home');
-
-    //        }else{
-
-    //         return redirect('register')->withError('error');
-
-
-    //        }
-
-    //     }
-
 
     public function logout(Request $request)
     {
         Auth::logout();
 
         
-        return redirect('admin/login');
+        return redirect('login');
     }
 
 
-    public function index()
+    public function dashboard()
     {
 
         return view('admin.dashboard.index');
@@ -188,16 +181,16 @@ class DashboardController extends Controller
         $search = $request['search'] ?? "";
         if ($search != ""){
 
-            $user = user::where('name', 'Like', '%'.$search. '%' )->orwhere('email', 'Like','%'.$search.'%')->paginate('5');
+            $user = user::where('name', 'Like', '%'.$search. '%' )->orwhere('email', 'Like','%'.$search.'%')->paginate('10');
 
            
         }else{
 
-            $user = User::paginate(5);
+            $user = User::paginate(10);
 
         }
 
-       return view('admin.dashboard.users', compact('user','search'));
+       return view('admin.Users.users', compact('user','search'));
     }
 
 
@@ -207,7 +200,7 @@ class DashboardController extends Controller
     public function addusers()
     {
 
-        return view('admin.dashboard.addusers');
+        return view('admin.Users.addUsers');
     }
     public function saveUsers(Request $request)
     {
@@ -216,30 +209,34 @@ class DashboardController extends Controller
 
         $request->validate([
 
-            'name' => 'required',
+            'user_name' => 'required|min:4|unique:users',
             'email' => 'required|email|unique:users,email',
-            'mobile' => 'required|numeric|unique:users,mobile|digits:10',
-            'location' => 'required',
+            'personal_phone_no' => 'required|numeric|unique:users,personal_phone_no|digits:10',
+            'school_city' => 'required',
             'password' => 'required',
+            'role' => 'required',
+
             'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
 
         ]);
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $imageName = time() . '-' . $file->getClientOriginalName();
-            $file->move('images/', $imageName);
+            $file->move('public/images/', $imageName);
 
             $user = new user;
 
-
-            $user->name = $request->name;
+            $user->user_name = $request->user_name;
             $user->email = $request->email;
             $user->image =   $imageName;
-            $user->mobile = $request->mobile;
-            $user->location = $request->location;
+            $user->personal_phone_no = $request->personal_phone_no;
+            $user->role = $request->role;
+            $user->name = $request->name;
+
+            $user->school_city = $request->school_city;
             $user->password = Hash::make($request->password);
             $user->save();
-            return redirect()->back()->with('success','User Added Successfully');
+            return redirect('admin/users')->with('success','User Added Successfully');
 
             
         }
@@ -252,7 +249,7 @@ class DashboardController extends Controller
 
         if($user){
 
-        return view('admin.dashboard.updateusers', compact('user'));
+        return view('admin.Users.updateusers', compact('user'));
         }
         else{
             return redirect()->back();
@@ -262,43 +259,51 @@ class DashboardController extends Controller
 
     public function updateUsers(Request $request, $id)
     {
-        $request->validate([
+        $user = user::find($id);
 
+        
+
+        $request->validate([
             
+            'personal_phone_no'   =>  [
+                'numeric',
+                'required',
+                'digits:10',
+                 Rule::unique('users')->ignore($id),
+            ],
+            'email'   =>  [
+                'required',
             
-            'mobile' => 'required|numeric|digits:10',
-            
+                 Rule::unique('users')->ignore($id),
+            ],
             'image' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
 
         ]);
 
 
-        $user = user::find($id);
+       
 
-
-        $user->name = $request->input('name');
         $user->email = $request->input('email');
         if ($request->hasfile('image')) {
-            $destination = 'images/' . $user->image;
+            $destination = 'public/images/' . $user->image;
             if (File::exists($destination)) {
                 File::delete($destination);
             }
             $file = $request->file('image');
             $imageName = time() . '-' . $file->getClientOriginalName();
-            $file->move('images/', $imageName);
+            $file->move('public/images/', $imageName);
             $user->image =   $imageName;
         }
 
 
 
+        $user->name =  $request->input('name');
 
-        $user->mobile = $request->input('mobile');
-        $user->location = $request->input('location');
+        $user->personal_phone_no = $request->input('personal_phone_no');
+        $user->school_city = $request->input('school_city');
         $user->update();
 
-
-
-        return redirect()->back()->with('success', 'User updated Successfully');
+        return redirect('admin/users')->with('success', 'User updated Successfully');
     }
 
 
@@ -316,4 +321,5 @@ class DashboardController extends Controller
             return redirect()->back()->with('error', 'User Deleted Successfully');
         
     }
+   
 }

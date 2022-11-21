@@ -1,7 +1,7 @@
 @extends('frontendviews.main')
 
     @section('content')
-    <section class="cmn_header_section space" style="background-image:url('{{asset('4n61/images/coaches_bg.png')}}') ;">
+    <section class="cmn_header_section space" style="background-image:url('{{asset('public/4n61/images/coaches_bg.jpg')}}') ;">
         <div class="custom_container">
             <h1>4N6 Speech Drama <br>
                 Member Schools </h1>
@@ -22,10 +22,11 @@
             <div class="col-md-4">
                 <div class="coaches_list">
                     <p class="states">States A-J</p>
-                    <ul>
-                        <li><a href="">Alabama</a></li>
-                        <li><a href="">Alaska</a></li>
-                        <li><a href="">Arizona</a></li>
+                    <ul>                                               
+                        @foreach ($stateAJ as $item)
+                       <li><a href="{{'view/'. $item->file}} "  target="_blank" >{{ucFirst(trans($item->name))}}</a></li>
+                       
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -33,9 +34,11 @@
                 <div class="coaches_list">
                     <p class="states">States K-N</p>
                     <ul>
-                        <li><a href="">Alabama</a></li>
-                        <li><a href="">Alaska</a></li>
-                        <li><a href="">Arizona</a></li>
+                        @foreach ($stateKN as $item)
+
+                        <li><a href="{{'view/'. $item->file}}" target="_blank">{{ucFirst(trans($item->name))}}</a></li>
+                       
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -43,9 +46,11 @@
                 <div class="coaches_list">
                     <p class="states">States O-Z</p>
                     <ul>
-                        <li><a href="">Alabama</a></li>
-                        <li><a href="">Alaska</a></li>
-                        <li><a href="">Arizona</a></li>
+                        @foreach ($stateOZ as $item)
+
+                        <li><a href="{{'view/'. $item->file}}" target="_blank">{{ucFirst(trans($item->name))}}</a></li>
+                       
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -53,7 +58,5 @@
     </div>
 </section>
     
-
-
 
     @endsection

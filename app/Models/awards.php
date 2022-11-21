@@ -12,4 +12,8 @@ class awards extends Model
     protected $fillable = [
         
         'awards_name',];
+
+        public function awards() {
+            return $this->belongsTo(Data::class,"id","award_name");
+        }
 }

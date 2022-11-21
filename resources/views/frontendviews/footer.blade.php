@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div>
-                    <a href="" class="footer_logo"><img src="{{asset('images/fanatic_logo_white.svg')}}" alt=""></a>
+                    <a href="{{url('/')}}" class="footer_logo"><img src="{{asset('/public/4n61/images/fanatic_logo_white.svg')}}" alt=""></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -44,44 +44,39 @@
         </div>
     </div>
     </footer>
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('js/popper.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/toast.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js"></script>
+    <script src="{{asset('/public/js/jquery.min.js')}}"></script>
+    <script src="{{asset('/public/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('/public/js/popper.min.js')}}"></script>
+    <script src="{{asset('/public/js/bootstrap.min.js')}}"></script>
+
+    <script src="{{asset('/public/js/validate.min.js')}}"></script>
+    <script src="{{asset('/public/js/additional.min.js')}}"></script>
+<script src="{{asset('/public/js/toast.js')}}"></script>
     
 
-    <script src="{{asset('4n61/js/jquery.steps.js')}}"></script>
+    <script src="{{asset('/public/4n61/js/jquery.steps.js')}}"></script>
     
 
     
 
     
-     <script> 
      
-     $(document).ready(function() {
-            toastr.options.timeOut = 10000;
-            @if (Session::has('error'))
-                toastr.error('{{ Session::get('error') }}');
-            @elseif(Session::has('success'))
-                toastr.success('{{ Session::get('success') }}');
-            @endif
-        });
-        
-
-    </script>
     <script>
+       
+
+          jQuery(document).ready(function() {
+            
+             toastr.options.timeOut = 10000;
+
+             @if (Session::has('error'))
+            
+                 toastr.error('{{ Session::get('error') }}');
+             @elseif(Session::has('success'))
+                 toastr.success('{{ Session::get('success') }}');
+             @endif
+         });
         
-        // $(function () {
-        //     $("#wizard").steps({
-        //         headerTag: "h2",
-        //         bodyTag: "section",
-        //         transitionEffect: "slideLeft"
-                
-        //     });
-        // });
+    
 
 
   var form = $("#wizard");
@@ -89,6 +84,9 @@
     errorPlacement: function errorPlacement(error, element) { element.before(error); },
 
     rules: {
+        user_name: { lettersonly: true },
+
+        
         confirmpassword: {
             equalTo: "#password"  
                
@@ -98,8 +96,8 @@
            
                
     },
-    confirm_personal_email: {
-            equalTo: "#personal_email"  
+    confirm_email: {
+            equalTo: "#email"          
                
     },
     confirm_assistant_coach_email_address: {
@@ -117,21 +115,34 @@
      personal_phone_no: {
 
       phoneUS: true
+     
 },
      billing_phone_no: {
 
      phoneUS: true
-}
-
-
-    
-    
 },
+    school_zip_code: {
+
+    zipcodeUS: true
+},
+    
 
 
-   
-});
-form.steps({
+     
+},
+messages: {
+    confirmpassword: "Please enter the same password",
+    confirm_school_email: "Please enter the same school email",
+    confirm_email: "Please enter the same personal email",
+    confirm_assistant_coach_email_address: "Please enter the same assitant coach email",
+    confirm_billing_email: "Please enter the same billing email",
+    user_name:"Must Be All Letters",
+     
+    }
+
+
+  });
+  form.steps({
     headerTag: "h2",
     bodyTag: "section",
     transitionEffect: "slideLeft",
@@ -148,7 +159,7 @@ form.steps({
     onFinished: function (event, currentIndex)
     {
         form.submit();
-        alert('submit')
+        
       
     }
 });

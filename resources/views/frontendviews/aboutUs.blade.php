@@ -1,7 +1,7 @@
 @extends('frontendviews.main')
 
     @section('content')
-    <section class="cmn_header_section space" style="background-image:url('{{asset('4n61/images/about_bg.png')}}');">
+    <section class="cmn_header_section space" style="background-image:url('{{asset('/public/4n61/images/about_bg.jpg')}}');">
         <div class="custom_container">
             <h1>About Us</h1>
         </div>

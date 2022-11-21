@@ -11,5 +11,13 @@ class category extends Model
     protected $table = 'categories';
     protected $fillable = [
         
-        'categories',];
+        'name',
+        'description',
+    
+    ];
+
+    public function categoryLinks()
+    {
+        return $this->hasMany(categoryLinks::class);
+    }
 }

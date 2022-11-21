@@ -13,7 +13,7 @@
         <div class="row align-items-center">
            <div class="col-md-5">
                 <div class="login_image">
-                    <img src="{{asset('4n61/images/login.png')}}" class="img-fluid" alt="">
+                    <img src="{{asset('/public/4n61/images/login.jpg')}}" class="img-fluid" alt="">
                 </div>
            </div>
            <div class="col-md-5">
@@ -21,23 +21,35 @@
                 <h2 class="ms-0">User Login</h2>
             </div>
             <div class="user_login">
-                <form action="">
+
+                <div class="login-form">
+                   
+                <form action="{{url('users/login')}}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <label for="">Username or Email</label>
-                        <input type="text" placeholder="Enter your username or email" class="form-control" >
+                        
+                        <label for="user_name">UserName or Email</label>
+                        <input type="user_name" name="user_name" id="user_name"  placeholder="Enter your username or email" class="form-control" >
+                        <span class ="text-danger">@error('user_name'){{$message}} @enderror</span>
+
+
                     </div>
+                    
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="text" placeholder="Enter your password" class="form-control" >
+                        <input type="password" name="password" id="password" placeholder="Enter your password" class="form-control" >
+                <span class ="text-danger">@error('password'){{$message}} @enderror</span>
+
+
                     </div>
                     <div class="remeber_password">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
                             <label class="form-check-label" for="flexCheckChecked">
                              Remember me
                             </label>
                           </div>
-                          <a href="">Forget Password</a>
+                          <a href="{{url('forget-password')}}">Forget Password</a>
                     </div>
                     <div>
                         <button class="cmn_btn">Login</button>

@@ -1,31 +1,37 @@
 <!-- Scripts -->
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/js/popper.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/js/matchheight.min.js')}}"></script>
-<script src="{{asset('assets/js/main.js')}}"></script>
+
+<script src="{{asset('/public/assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/popper.js')}}"></script>
+<script src="{{asset('/public/assets/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/matchheight.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/main.js')}}"></script>
 
 <!--  Chart js -->
-<script src="{{asset('assets/js/chart.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/chart.min.js')}}"></script>
 
 <!--Chartist Chart-->
-<script src="{{asset('assets/js/chartlist.min.js')}}"></script>
-<script src="{{asset('assets/js/chart.plugin.js')}}"></script>
+<script src="{{asset('/public/assets/js/chartlist.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/chart.plugin.js')}}"></script>
 
-<script src="{{asset('assets/js/flot.min.js')}}"></script>
-<script src="{{asset('assets/js/flot.pie.js')}}"></script>
-<script src="{{asset('assets/js/flot.spline.js')}}"></script>
+<script src="{{asset('/public/assets/js/flot.min.js')}}"></script>
+<script src="{{asset('/public/assets/js/flot.pie.js')}}"></script>
+<script src="{{asset('/public/assets/js/flot.spline.js')}}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
-<script src="{{asset('assets/js/init/weather-init.js')}}"></script>
+<script src="{{asset('/public/assets/js/init/weather-init.js')}}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-<script src="{{asset('assets/js/init/fullcalendar-init.js')}}"></script>
-<script src="{{asset('js/toast.js')}}"></script>
+<script src="{{asset('/public/assets/js/init/fullcalendar-init.js')}}"></script>
+<script src="{{asset('/public/js/toast.js')}}"></script>
 
 <!--Local Stuff-->
+
+
+
 <script>
+
+
 
 jQuery(document).ready(function() {
              toastr.options.timeOut = 10000;
@@ -70,7 +76,7 @@ jQuery(document).ready(function() {
         // Pie chart flotPie1  End
         // cellPaiChart
         var cellPaiChart = [
-            { label: "Direct Sell", data: [[1,65]], color: '#5b83de'},
+            { label: "Direct Sell", data: [[1,65]], color: '#   '},
             { label: "Channel Sell", data: [[1,35]], color: '#00bfa5'}
         ];
         $.plot('#cellPaiChart', cellPaiChart, {

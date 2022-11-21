@@ -528,6 +528,7 @@ section.cmn_header_section h1 {
 }
 
 .register_form_two .form-group label:first-child {order: 1;}
+.register_form_two .form-group.no_error label:first-child {order: unset;}
 /*  */
 .multiple_nav > ul > li span.active {
   background-color: #ef8a17;

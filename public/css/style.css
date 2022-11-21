@@ -291,11 +291,16 @@ header .navbar-light .navbar-nav .nav-link {
 header .navbar-light .navbar-nav .nav-link:hover {
   color: #ef8a17;
 }
+
+header .navigates.mobile {
+  display: none;
+
+}
 /* headaer ends here */
 
 /* main banner starts here  */
 .fanatic_banner {
-  background: url("../images/fanatic_bg.png") no-repeat center;
+  background: url("../4n61/images/fanatic_bg.jpg") no-repeat center;
   min-height: 800px;
   display: flex;
   align-items: center;
@@ -365,7 +370,7 @@ a.play_btn.cmn_btn {
 
 .service_content ul li {
   list-style: inside;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   font-size: 22px;
   font-weight: 500;
 }
@@ -375,7 +380,7 @@ a.play_btn.cmn_btn {
   z-index: 3;
   padding-left: 80px;
   padding-right: 120px;
-  padding-top: 0;
+  padding-top: 50px;
 }
 .service_outer {
   position: relative;
@@ -469,7 +474,7 @@ a.footer_logo img {
 
 /* register screens  starts here*/
 .cmn_header_section {
-  background-image: url("../4n61/images/register_bg.png");
+  background-image: url("../4n61/images/register_bg.jpg");
   background-repeat: no-repeat;
   padding: 11em 0em;
   background-size: cover;
@@ -528,6 +533,7 @@ section.cmn_header_section h1 {
 }
 
 .register_form_two .form-group label:first-child {order: 1;}
+.register_form_two .form-group.no_error label:first-child {order: unset;}
 body .form-control:focus {
 
   border-color: #ef8a17;
@@ -838,4 +844,184 @@ body input[type=checkbox]:checked {
   background-color: #ef8a17 ;
   color: #ffffff !important;
   border-color: #ef8a17;
+}
+
+
+/* media query starts here */
+@media(max-width:1799px){
+  .banner_content h1 {
+    font-size: 60px;
+  }
+}
+@media(max-width:1440px){
+
+  .banner_content h1 {
+    font-size: 46px;
+}
+.service_content {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.service_content ul li {
+  padding-bottom: 16px;
+  font-size: 18px;
+}
+.servic_icon img {
+  max-width: 40px;
+} 
+}
+
+@media(max-width:1199px){
+
+        .banner_content h1 {
+          font-size: 40px;
+             }
+      .service_content ul li {
+        padding-bottom: 15px;
+        font-size: 15px;
+          }
+      .service_content {
+        padding-left:25px;
+        padding-right: 25px;
+         }
+      .service_outer.database .service_content {
+        padding-left: 25px;
+      }
+    
+    h3.scondary_heading {
+      font-size: 32px;
+  }
+  .service_outer::before {
+    top: 23px;
+}
+.service_outer::after {
+
+  left: 60px;
+}
+div.service_outer.database::after {
+
+  right: 70px;
+}
+}
+@media (max-width: 1024px){
+.banner_content h1 {
+    font-size: 36px;
+}
+}
+
+@media(max-width:991px){
+  .service_content ul li {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+.service_outer.database .service_content {
+  padding-left: 20px;
+}
+.service_content {
+  padding-right: 20px;
+}
+h3.scondary_heading {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.service_outer::before {
+  top: 18px;
+  bottom: -23px;
+}
+.service_content {
+  padding-left: 20px;
+}
+
+}
+@media(max-width:767px){
+  .service_outer::before {
+    top: 18px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+section.space.our_services .row:last-child .service_image {
+    padding-top: 70px;
+}
+.service_outer.database::before {
+  right: 0;
+  left: 0;
+}
+div.service_outer.database::after {
+  background-image:url("../images/right_triangle.png");
+  top: 0px;
+  background-size: contain;
+  right: 0;
+  left: 0;
+}
+.service_outer::after {
+  left: 0;
+}
+.col-md-6.service_outer {
+  padding-bottom: 41px;
+}
+.space_bt_mobile{
+  margin-bottom: 70px;
+}
+.row.space {
+  padding: 0;
+}
+a.footer_logo {
+  display: block;
+  text-align: center;
+}
+a.footer_logo img {
+  width: 30%;
+  padding-top: 30px;
+  margin: auto;
+}
+footer a, footer p {
+  
+  text-align: center;
+  display: block;
+}
+footer ul li {
+  list-style: none;
+  text-align: center;
+}
+.subscritpion {
+  text-align: center;
+}
+.fanatic_offer {
+  margin-top: 30px;
+  width: 200px;
+    height: 200px;
+}
+.banner_content h1 {
+  font-size: 26px;
+}
+.fanatic_offer p {
+  font-size: 16px;
+}
+.fanatic_offer p strong {
+  font-size: 20px;
+}
+.fanatic_offer p span {
+  top: -8px;
+}
+a.navbar-brand {
+  width: 110px;
+}
+header a.navbar-brand img {
+  width: 100%;
+}
+.mobile{
+  display: block;
+  padding-left: 24px;
+
+}
+header .navigates.desktop {
+  display: none;
+}
+
+header .navbar-nav-scroll {
+  height: unset;
+  max-height: unset;
+}
 }

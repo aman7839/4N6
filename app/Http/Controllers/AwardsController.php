@@ -9,8 +9,8 @@ class AwardsController extends Controller
 {
     public function index()
     {
-        $awards = awards::paginate(4);
-        return view('admin.dashboard.awards',compact('awards'));
+        $awards = awards::paginate(10);
+        return view('admin.Awards.awards',compact('awards'));
     }
 
     
@@ -20,7 +20,7 @@ class AwardsController extends Controller
     public function addawards()
     {
        
-        return view('admin.dashboard.addawards');
+        return view('admin.Awards.addawards');
     }
 
 
@@ -51,7 +51,7 @@ class AwardsController extends Controller
 
         $awards = Awards::find($id);
 
-        return view('admin.dashboard.editAwards', compact('awards'));
+        return view('admin.Awards.editAwards', compact('awards'));
     }
     public function updateAwards(Request $request, $id)
     {

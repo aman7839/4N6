@@ -18,15 +18,19 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check())
-        {
-        if (Auth::user()->role_as == true) {
+        
+        if (Auth::user()->role == 'admin' ) {
             return $next($request);
         
-               }
+            }elseif(Auth::user()->role =='student'){
+
+                return redirect()->back()->with('error', 'Access Denied');
+            }
+            elseif(Auth::user()->role =='coach'){
+
+                return redirect()->back()->with('error', 'Access Denied');
+            }
         
-        else{
-            return redirect()->back();
-        }
-        }
     }
 }
+

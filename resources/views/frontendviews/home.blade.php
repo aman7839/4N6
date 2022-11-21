@@ -12,7 +12,7 @@
                         <h1 class="pb-4">The Ultimate Resources <br>
                             for Forensics (4N6), Speech <br>
                             and/or Drama Coaches & Students</h1>
-                        <a href="#" class="cmn_btn">Member Login</a>
+                        <a href="{{url('login')}}" class="cmn_btn">Member Login</a>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
             </div>
-            <a href="" class="play_btn cmn_btn"><i class="fa fa-play me-2" aria-hidden="true"></i>
-                Play</a>
+            {{-- <a href="" class="play_btn cmn_btn"><i class="fa fa-play me-2" aria-hidden="true"></i>
+                Play</a> --}}
         </div>
     </section>
     <!-- Main banner ends here -->
@@ -37,10 +37,10 @@
     <section class="space our_services">
         <div class="custom_container">
             <div class="cmn_heading">
-                <a href="{{url('services')}}"><h2>Our Services</h2></a>
+               <h2>Our Services</h2>
             </div>
             <div class="row mt-5 mb-5">
-                <div class="col-lg-6 service_outer">
+                <div class="col-md-6 service_outer space_bt_mobile">
                     <div class="service_content">
                         <h3 class="scondary_heading">Vault</h3>
 
@@ -60,25 +60,25 @@
                         <a href="{{url('register')}}" class="cmn_btn">Become a Member</a>
                     </div>
                 </div>
-                <div class="col-md-6 service_image">
+                <div class="col-md-6 service_image space_bt_mobile">
                     <div class="service_img">
-                        <img src="{{asset('images/valut.png')}}" class="img-fluid" alt="">
+                        <img src="{{asset('/public/4n61/images/valut.jpg')}}" class="img-fluid" alt="">
                     </div>
                     <div class="servic_icon text-end">
-                        <img src="{{asset('images/valut_icon.png')}}" class=" mt-3" alt="">
+                        <img src="{{asset('/public/4n61/images/valut_icon.png')}}" class=" mt-3" alt="">
                     </div>
                 </div>
             </div>
             <div class="row space">
                 <div class="col-md-6 service_image">
-                    <div class="service_img">
-                        <img src="{{asset('images/database.png')}}" class="img-fluid" alt="">
+                    <div class="service_img space_bt_mobile">
+                        <img src="{{asset('/public/4n61/images/database.jpg')}}" class="img-fluid" alt="">
                     </div>
                     <div class="servic_icon">
-                        <img src="{{asset('images/data_icon.png')}}" class=" mt-3" alt="">
+                        <img src="{{asset('/public/4n61/images/data_icon.png')}}" class=" mt-3" alt="">
                     </div>
                 </div>
-                <div class="col-lg-6 service_outer database">
+                <div class="col-md-6 service_outer database space_bt_mobile">
                     <div class="service_content">
                         <h3 class="scondary_heading">Database</h3>
 
@@ -101,7 +101,7 @@
 
             </div>
             <div class="row mt-5 mb-5">
-                <div class="col-lg-6 service_outer">
+                <div class="col-md-6 service_outer">
                     <div class="service_content">
                         <h3 class="scondary_heading">Extemp & Limited <br>
                             Prep Events</h3>
@@ -124,10 +124,10 @@
                 </div>
                 <div class="col-md-6 service_image">
                     <div class="service_img">
-                        <img src="{{asset('images/extemp.png')}}" class="img-fluid" alt="">
+                        <img src="{{asset('/public/4n61/images/extemp.jpg')}}" class="img-fluid" alt="">
                     </div>
                     <div class="servic_icon text-end">
-                        <img src="{{asset('images/extemp_icon.png')}}" class=" mt-3" alt="">
+                        <img src="{{asset('/public/4n61/images/extemp_icon.png')}}" class=" mt-3" alt="">
                     </div>
                 </div>
             </div>

@@ -1,96 +1,82 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Theme;
 
 use Illuminate\Http\Request;
-use App\Models\theme;
 
 class ThemeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {    $theme = theme::all();
-        return view('admin.dashboard.Theme',compact('theme'));
+    //
+    public function index(){
+
+        $theme = Theme::paginate(10);
+        return view('admin.Theme.theme',compact('theme'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function savetheme(Request $request){
-        $theme = new theme;
-        $theme->themes = $request->themes;
-       
+    public function addTheme(){
+
+      
+        return view('admin.Theme.addtheme');
+
+    }
+    public function saveTheme(Request $request){
+
+        $request->validate([
+
+            'name' => 'required',
+            
+
+        ]);
+
+        $theme = new Theme;
+
+        $theme->name = $request->name;
         $theme->save();
-        return redirect('theme');
+        return redirect('admin/theme')->with('success','Theme added succesfully');
 
 
+       
     }
-    public function addtheme(){
+    public function editTheme($id){
 
-        return view('admin.dashboard.addtheme');
-    }
+        $theme = Theme::find($id);
+
     
+        return view('admin.Theme.edittheme',compact('theme'));
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+       
+    }
+    public function updateTheme(Request $request, $id)
     {
-        //
+
+        $request->validate([
+
+            'name' => 'required',
+            
+
+        ]);
+
+        $awards = Theme::find($id);
+
+
+        $awards->name = $request->input('name');
+        
+        
+        $awards->update();
+
+        return redirect('admin/theme')->with('success','Theme updated succesfully');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    public function deleteTheme($id){
+        $theme = Theme::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $theme->delete();
+        return redirect()->back()->with('error', 'Theme deleted Successfully');
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
+   
 }

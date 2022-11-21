@@ -12,16 +12,17 @@
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     
-    <link rel="icon" type="png" href="{{asset('images/fanatic_logo.svg')}}">
-    <link rel="shortcut icon" type="png" href="{{asset('4n6/images/mariano_fav.png')}}">
+    <link rel="icon" type="png" href="{{asset('/public/images/fanatic_logo.svg')}}">
+    <link rel="shortcut icon" type="png" href="{{asset('/public/images/mariano_fav.png')}}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="{{asset('4n6/assets/css/bootstrap.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('/public/css/normalize.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/4n61/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
    
-    <link rel="stylesheet" href="{{asset('4n6/assets/css/cs-skin-elastic.css')}}">
-    <link rel="stylesheet" href="{{asset('4n6/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/toast.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/4n61/assets/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/4n61/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/public/css/toast.css')}}">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
@@ -72,40 +73,113 @@
 
 <body>
     <!-- Left Panel -->
+
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item {{ request()->is('admin/index') ? 'active' : ''}}">
-                        <a href="{{url('admin/index')}}"><i class="menu-icon fa fa-home"></i>Home </a>
+                   
+                    @auth
+                    @if(auth()->user()->role=='admin')
+
+                    <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : ''}}">
+                        <a href="{{url('admin/dashboard')}}"><i class="menu-icon fa fa-tachometer"></i>Dashboard </a>
                     </li>
+
+                    <li class="nav-item {{ request()->is('admin/editProfile/'.Auth::user()->id) ? 'active' : ''}}">  
+                        <a class="nav-link" href="{{ url('admin/editProfile/'.Auth::user()->id)}}"><i class=" menu-icon fa fa-users"></i>My Profile</a>
+
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/changePassword') ? 'active' : ''}}">  
+                        <a class="nav-link" href="{{ url('admin/changePassword') }}"><i class=" menu-icon  fa fa-key"></i>Change Password </a>
+
+                    </li>
+                
                     <li class="nav-item {{ request()->is('admin/users') ? 'active' : ''}}">
-                        <a href="{{url('admin/users')}}"><i class="menu-icon fa fa-user"></i>Users </a>
+                        <a href="{{url('admin/users')}}"><i class="menu-icon fa fa-user"></i>Manage Users </a>
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/topics') ? 'active' : ''}}">
+                        <a href="{{url('admin/topics')}}"><i class="menu-icon fa fa-star    "></i> Topics </a>
                     </li>
                     <li class="nav-item {{ request()->is('admin/documents') ? 'active' : ''}}">
-                        <a href="{{url('admin/documents')}}"><i class="menu-icon fa fa-trophy"></i>Add Documents </a>
+                        <a href="{{url('admin/documents')}}"><i class="menu-icon fa fa-file-text"></i>Manage Documents </a>
                     </li>
-                    <li class="nav-item {{ request()->is('admin/awards') ? 'active' : ''}}">
+                    <li class="nav-item {{ request()->is('admin/states') ? 'active' : ''}}">
+                        <a href="{{url('admin/states')}}"><i class="menu-icon fa fa-globe"></i>States</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/category') ? 'active' : ''}}">
+                        <a href="{{url('admin/category')}}"><i class="menu-icon fa fa-link"></i> Manage Links</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/data') ? 'active' : ''}}">
+                        <a href="{{url('admin/data')}}"><i class="menu-icon fa fa-table"></i> Manage Data</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/messages') ? 'active' : ''}}">  
+                        <a href="{{url('admin/messages')}}"><i class="menu-icon fa fa-commenting-o"></i> Messages</a>
+                    </li>
+                    <li class="nav-item {{ request()->is('admin/editProfile') ? 'active' : ''}}">  
+                        <a class="nav-link" href="{{url('admin/logout')}}"><i class=" menu-icon fa fa-sign-out"></i>Logout</a>
+
+                    </li>
+
+
+
+                     {{-- <li class="nav-item {{ request()->is('admin/awards') ? 'active' : ''}}">
                         <a href="{{url('admin/awards')}}"><i class="menu-icon fa fa-star"></i>Awards</a>
                     </li>
-                    <!-- <li class="menu-title">UI elements</li>/.menu-title -->
-                   
-                    {{-- <li>
-                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Payments </a>
+                    <li class="nav-item {{ request()->is('admin/theme') ? 'active' : ''}}">
+                        <a href="{{url('admin/theme')}}"><i class="menu-icon fa fa-star"></i>Theme</a>
                     </li>
-                    <li class="menu-title">Help</li><!-- /.menu-title -->
-                    <li>
-                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>View tutorial </a>
+                    <li class="nav-item {{ request()->is('admin/playcategory') ? 'active' : ''}}">
+                        <a href="{{url('admin/playcategory')}}"><i class="menu-icon fa fa-star"></i>Play category</a>
                     </li>
-                    <li>
-                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Android guide </a>
+                    <li class="nav-item {{ request()->is('admin/extemptopics') ? 'active' : ''}}">
+                        <a href="{{url('admin/extemptopics')}}"><i class="menu-icon fa fa-star"></i>Extemp Topics</a>
                     </li> --}}
+
+
+                    @endif
+
+                  
+
+                    @if(auth()->user()->role=='coach')
+                    
+                    <li class="nav-item {{ request()->is('coach/dashboard') ? 'active' : ''}}">
+                        <a href="{{url('coach/dashboard')}}"><i class="menu-icon fa fa-tachometer"></i>Dashboard </a>
+                    </li>
+                    <li class="nav-item {{ request()->is('coach/students') ? 'active' : ''}}">  
+                        <a href="{{url('coach/students')}}"><i class="menu-icon fa fa-commenting-o"></i> Manage Students</a>
+                    </li>
+
+                    <li class="nav-item ">  
+                        <a class="nav-link" href="{{url('coach/logout')}}"><i class=" menu-icon fa fa-sign-out"></i>Logout</a>
+                           
+                        </li>
+                      
+    
+
+                    @endif
                    
+                    @if(auth()->user()->role=='student')
 
+                    <li class="nav-item {{ request()->is('student/dashboard') ? 'active' : ''}}">
+                        <a href="{{url('student/dashboard')}}"><i class="menu-icon fa fa-tachometer"></i>Dashboard </a>
+                    </li>
+                    <li class="nav-item ">  
+                        <a class="nav-link" href="{{url('student/logout')}}"><i class=" menu-icon fa fa-sign-out"></i>Logout</a>
+                           
+                        </li>
+                 
+                    @endif
 
+                    @endauth
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
+
+
+
     <!-- /#left-panel -->
     <!-- Right Panel -->
+
+

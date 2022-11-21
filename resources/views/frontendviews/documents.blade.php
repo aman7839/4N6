@@ -3,7 +3,7 @@
     @section('content')
 
 
-    <section class="cmn_header_section space" style="background-image:url('{{asset('4n61/images/service_bg.png')}}') ;">
+    <section class="cmn_header_section space" style="background-image:url('{{asset('/public/4n61/images/service_bg.jpg')}}') ;">
         <div class="custom_container">
             <h1>Documents</h1>
         </div>
@@ -20,33 +20,25 @@
         </div>
         <div class="container space pt-0">
             <div class="row">
+
+                @foreach ($document as $item)
+
                 <div class="col-md-4">
                     <div class="doc_card">
                             <div class="doc_icon">
-                                    <img src="{{asset('4n61/images/doc_icon.png')}}" alt="">
+                              
+                                    
+                                   <a href="{{'download/'. $item->image }}"target="_blank" > <img src="{{asset('/public/4n61/images/doc_icon.png')}}" alt=""></a>
                             </div>
-                            <p class="doc_title">Price Quote</p>
-                            <p class="doc_date">Aug 14 2022 12:49 pm</p>
+                            <p class="doc_date">Name: {{$item->name}} </p>
+
+                            <p class="doc_date"> Date: {{$item->created_at}} pm </p>
+
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="doc_card">
-                            <div class="doc_icon">
-                                    <img src="{{asset('4n61/images/doc_icon.png')}}" alt="">
-                            </div>
-                            <p class="doc_title">Price Quote</p>
-                            <p class="doc_date">Aug 14 2022 12:49 pm</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="doc_card">
-                            <div class="doc_icon">
-                                    <img src="{{asset('4n61/images/doc_icon.png')}}" alt="">
-                            </div>
-                            <p class="doc_title">Price Quote</p>
-                            <p class="doc_date">Aug 14 2022 12:49 pm</p>
-                    </div>
-                </div>
+                @endforeach
+
+              
             </div>
         </div>
     </section>
