@@ -17,7 +17,7 @@ class ForgotPasswordController extends Controller
 {
     public function showForgetPasswordForm()
     {
-       return view('admin.dashboard.Users.forgetPassword');
+       return view('admin.Users.forgetPassword');
     }
     public function submitForgetPasswordForm(Request $request)
       {
@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
               'created_at' => Carbon::now()
             ]);
   
-          Mail::send('admin.dashboard.Users.forgotPassword', ['token' => $token], function($message) use($request){
+          Mail::send('admin.Users.forgotPassword', ['token' => $token], function($message) use($request){
 
             
               $message->to($request->email);
@@ -48,7 +48,7 @@ class ForgotPasswordController extends Controller
 
 
       public function showResetPasswordForm($token) { 
-        return view('admin.dashboard.Users.forgetpasswordlink', ['token' => $token]);
+        return view('admin.Users.forgetpasswordlink', ['token' => $token]);
 
      }
 

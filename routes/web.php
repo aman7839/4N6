@@ -22,9 +22,9 @@ use App\Http\Controllers\TopicRoles;
 use App\Http\Controllers\ExtempController;
 use App\Http\Controllers\StudentsController;
 
-Route::get('/', function () {
-    return view('frontendviews.home');
-});
+// Route::get('/', function () {
+//     return view('frontendviews.login');
+// });
 
 
 
@@ -164,8 +164,17 @@ Route::put('/updateextemp/{id}', [ExtempController::class, 'updateExtemp']);
 Route::get('/messages', [contactusController::class, 'index']);
 Route::get('/viewmessages/{id}', [contactusController::class, 'viewMessages']);
 Route::get('/replymessages/{id}', [contactusController::class, 'replyMessages']);
-
 Route::get('/deletemessages/{id}', [contactusController::class, 'deleteMessages']);
+Route::get('/offerprice', [HomeController::class,'offerPrice']);
+Route::get('/addofferprice', [HomeController::class,'addofferPrice']);
+Route::post('/saveofferprice', [HomeController::class,'saveofferPrice']);
+Route::get('/editofferprice/{id}', [HomeController::class,'editofferPrice']);
+Route::put('/updateofferprice/{id}', [HomeController::class,'updateofferPrice']);
+Route::get('/deleteofferprice/{id}', [HomeController::class,'deleteoffer']);
+
+
+
+
 
 
 
@@ -176,6 +185,10 @@ Route::get('/deletemessages/{id}', [contactusController::class, 'deleteMessages'
 // globalviews routes
 
 Route::get('/aboutUs', [HomeController::class,'aboutUs']);
+Route::get('/home', [HomeController::class,'Home']);
+Route::get('/', [HomeController::class,'Home']);
+
+
 Route::get('/contactUs', [HomeController::class,'contactUs']);
 Route::get('/documents', [HomeController::class,'documents']);
 Route::get('/download/{file}', [HomeController::class, 'download']);
@@ -185,6 +198,8 @@ Route::get('/school', [HomeController::class,'school']);
 Route::get('/view/{file}', [statesController::class, 'view']);
 
 Route::get('/tutorial', [HomeController::class,'tutorial']);
+Route::get('/regeneratetopics', [HomeController::class,'RandomTopics']);
+
 Route::get('/services', [HomeController::class,'services'])->name('user.services');
 Route::get('/login', [HomeController::class,'login'])->middleware('login');
 Route::post('/contactUS', [contactusController::class,'saveContactUs']);

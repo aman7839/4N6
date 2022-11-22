@@ -1,64 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel - ItSolutionStuff.com</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <style type="text/css">
-        @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-  
-        body{
-            margin: 0;
-            font-size: .9rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: #212529;
-            text-align: left;
-            background-color: #f5f8fa;
-        }
-        .navbar-laravel
-        {
-            box-shadow: 0 2px 4px rgba(0,0,0,.04);
-        }
-        .navbar-brand , .nav-link, .my-form, .login-form
-        {
-            font-family: Raleway, sans-serif;
-        }
-        .my-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .my-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        .login-form
-        {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        .login-form .row
-        {
-            margin-left: 0;
-            margin-right: 0;
-        }
-    </style>
-</head>
-<body>
-    <main class="login-form">
-        <div class="cotainer">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Reset Password</div>
-                        <div class="card-body">
-        
+
+    @extends('frontendviews.main')
+
+    @section('content')
+
+    
+    <div>
+    
+        <div class="custom_container space">
+            <div class="row align-items-center">
+               <div class="col-lg-5 col-md-6">
+                    <div class="login_image">
+                        <img src="{{asset('/public/4n61/images/login.jpg')}}" class="img-fluid" alt="">
+                    </div>
+               </div>
+               <div class="col-md-5">
+                <div class="cmn_heading mb-4 text-start">
+                    <h2 class="ms-0">Reset Password</h2>
+                </div>
+                <div class="user_login">
+    
+                    <div class="login-form">
+
                             <form action="{{ route('reset.password.post') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="token" value="{{ $token }}">
         
-                                {{-- <div class="form-group row">
+                                <div class="form-group ">
                                     <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                     <div class="col-md-6">
                                         <input type="text" id="email_address" class="form-control" name="email" required autofocus>
@@ -66,9 +33,9 @@
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
-                                </div> --}}
+                                </div>
         
-                                <div class="form-group row">
+                                <div class="form-group ">
                                     <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                     <div class="col-md-6">
                                         <input type="password" id="password" class="form-control" name="password" required autofocus>
@@ -78,7 +45,7 @@
                                     </div>
                                 </div>
         
-                                <div class="form-group row">
+                                <div class="form-group ">
                                     <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                     <div class="col-md-6">
                                         <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required autofocus>
@@ -88,10 +55,9 @@
                                     </div>
                                 </div>
         
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Reset Password
-                                    </button>
+                                <button type="submit" class="cmn_btn">
+                                   Reset Password
+                                </button>
                                 </div>
                             </form>
                               
@@ -100,6 +66,4 @@
                 </div>
             </div>
         </div>
-      </main>
-    </body>
-    </html>
+    @endsection 

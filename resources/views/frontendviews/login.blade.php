@@ -11,7 +11,7 @@
 
     <div class="custom_container space">
         <div class="row align-items-center">
-           <div class="col-md-5">
+           <div class="col-lg-5 col-md-6">
                 <div class="login_image">
                     <img src="{{asset('/public/4n61/images/login.jpg')}}" class="img-fluid" alt="">
                 </div>

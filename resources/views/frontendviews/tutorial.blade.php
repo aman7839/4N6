@@ -25,7 +25,7 @@
                             allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="col-md-5 tutorial_content">
+                <div class="col-md-6 col-lg-5 tutorial_content">
                     <img src="{{asset('/public/4n61/images/icon_tilt.png')}}" class="img-fluid top_icon" alt="">
                     <div class="">
                         <ul>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="row  space">
-                <div class="col-md-5 tutorial_content">
+                <div class="col-md-6 col-lg-5 tutorial_content order-2-sm">
                     <img src="{{asset('/public/4n61/images/database_icon.png')}}" class="img-fluid bottom_icon" alt="">
                     <div class="">
                         <ul>
@@ -51,8 +51,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-7">
-                    <div class="tutorial_video">
+                <div class="col-md-6">
+                    <div class="tutorial_video order-1-sm">
                         <iframe  height="450" src="https://www.youtube.com/embed/yAoLSRbwxL8"
                             title="Dummy Video" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="row space pt-0">
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <div class="tutorial_video">
                         <iframe  height="450" src="https://www.youtube.com/embed/yAoLSRbwxL8"
                             title="Dummy Video" frameborder="0"
@@ -69,7 +69,7 @@
                             allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="col-md-5 tutorial_content">
+                <div class="col-md-6 col-lg-5 tutorial_content">
                     <img src="{{asset('/public/4n61/images/icon_tilt_mix.png')}}" class="img-fluid bottom_icon" alt="">
                   
                     <div class="">

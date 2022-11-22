@@ -35,9 +35,9 @@
                         <li class="nav-item ">
                             <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" aria-current="page" href="{{url('/')}}">Home</a>
                         </li>
-                        <li class="nav-item ">
+                        {{-- <li class="nav-item ">
                             <a class="nav-link {{ request()->is('review') ? 'active' : ''}}" href="#">Review</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('tutorial') ? 'active' : ''}}" href="{{url('tutorial')}}">Tutorial</a>
                         </li>

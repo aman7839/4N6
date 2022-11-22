@@ -220,6 +220,9 @@ h6 {
   margin: auto;
   position: relative;
 }
+.cmn_btn:hover {
+  color: #000;
+}
 .cmn_btn {
   background: #ef8a17;
   padding: 10px 15px;
@@ -846,12 +849,25 @@ body input[type=checkbox]:checked {
   border-color: #ef8a17;
 }
 
-
+.contact_image {
+  text-align: right;
+  padding-right: 4em;
+}
 /* media query starts here */
+
 @media(max-width:1799px){
   .banner_content h1 {
     font-size: 60px;
   }
+  section.cmn_header_section h1 {
+    font-size: 50px;
+}
+.cmn_header_section {
+  padding: 9em 0em;
+}
+.tutorial_content li {
+  font-size: 20px;
+}
 }
 @media(max-width:1440px){
 
@@ -871,7 +887,11 @@ body input[type=checkbox]:checked {
   max-width: 40px;
 } 
 }
-
+@media(max-width:1299px){
+  section.cmn_header_section h1 {
+    font-size: 40px;
+}
+}
 @media(max-width:1199px){
 
         .banner_content h1 {
@@ -903,11 +923,36 @@ div.service_outer.database::after {
 
   right: 70px;
 }
+section.cmn_header_section h1 {
+  font-size: 28px;
+}
+.cmn_header_section {
+  padding: 8em 0em;
+}
+.contact_image {
+  text-align: right;
+  padding-right: 0;
+}
+.cmn_heading h2 {
+  font-size: 20px;
+}
+
 }
 @media (max-width: 1024px){
 .banner_content h1 {
     font-size: 36px;
 }
+.cmn_header_section {
+  padding: 6em 0em;
+}
+.about_content h2, .about_content span {
+  color: #ef8a17;
+  font-size: 18px;
+}
+.cmn_heading h2 {
+  font-size: 18px;
+}
+
 }
 
 @media(max-width:991px){
@@ -932,6 +977,15 @@ h3.scondary_heading {
 .service_content {
   padding-left: 20px;
 }
+.cmn_heading p {
+  color: #000;
+  font-weight: 500;
+  font-size: 18px;
+}
+.doc_card {
+  margin: 1em;
+}
+
 
 }
 @media(max-width:767px){
@@ -1023,5 +1077,58 @@ header .navigates.desktop {
 header .navbar-nav-scroll {
   height: unset;
   max-height: unset;
+}
+.coaches_list {
+  text-align: center;
+}
+.custom_container.space {
+  padding-bottom: 20px;
+}
+section.instructor_content {
+  padding-top: 30px;
+}
+.tutorial_video, .tutorial_content {
+  padding-bottom: 50px;
+}
+.bottom_icon {
+  top: 0;
+  width: 45px;
+}
+.tutorial_content li {
+  font-size: 16px;
+}
+.top_icon {
+
+  width: 45px;
+}
+.contact_image img {
+  width: 100%;
+  height: unset;
+  padding-top: 20px;
+}
+.about_content h2, .about_content span {
+  color: #ef8a17;
+  font-size: 16px;
+}
+.login_image {
+  margin-bottom: 60px;
+}
+.wizard a p {
+  font-size: 14px;
+}
+.wizard a p {
+  display: none;
+}
+section.cmn_header_section h1 {
+  font-size: 20px;
+}
+.cmn_heading h2 {
+  font-size: 18px;
+}
+.order-2-sm{
+  order: 2;
+}
+.order-1-sm{
+  order: 1;
 }
 }

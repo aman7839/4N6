@@ -15,16 +15,40 @@
                         <a href="{{url('login')}}" class="cmn_btn">Member Login</a>
                     </div>
                 </div>
+
+          
+           @foreach ($offerPrice as $item)
+
+                @if ($item->status == '1')
+                @if($item->from_date == $today || $item->to_date == $today )
+
+                <div class="col-lg-3">
+                    <div class="fanatic_offer">
+                        <p>
+                           {{$item->description ?? ''}}<br>
+                           Now Get 365 days <br>
+                            For <br>
+                            <strong>${{$item->offer_price ?? ''}}</strong><span>only</span>
+                        </p>
+                    </div>
+                </div>
+               
+                @else
+                                 
                 <div class="col-lg-3">
                     <div class="fanatic_offer">
                         <p>
                             Now <br>
-                            Get 565 days <br>
+                            Get 365 days <br>
                             For <br>
                             <strong>$200</strong><span>only</span>
                         </p>
                     </div>
                 </div>
+                @endif
+                @endif
+          @endforeach
+
             </div>
             {{-- <a href="" class="play_btn cmn_btn"><i class="fa fa-play me-2" aria-hidden="true"></i>
                 Play</a> --}}
@@ -60,7 +84,7 @@
                         <a href="{{url('register')}}" class="cmn_btn">Become a Member</a>
                     </div>
                 </div>
-                <div class="col-md-6 service_image space_bt_mobile">
+                <div class="col-md-6 service_image ">
                     <div class="service_img">
                         <img src="{{asset('/public/4n61/images/valut.jpg')}}" class="img-fluid" alt="">
                     </div>
@@ -70,7 +94,7 @@
                 </div>
             </div>
             <div class="row space">
-                <div class="col-md-6 service_image">
+                <div class="col-md-6 service_image order-2-sm">
                     <div class="service_img space_bt_mobile">
                         <img src="{{asset('/public/4n61/images/database.jpg')}}" class="img-fluid" alt="">
                     </div>
@@ -78,7 +102,7 @@
                         <img src="{{asset('/public/4n61/images/data_icon.png')}}" class=" mt-3" alt="">
                     </div>
                 </div>
-                <div class="col-md-6 service_outer database space_bt_mobile">
+                <div class="col-md-6 service_outer database space_bt_mobile order-1-sm">
                     <div class="service_content">
                         <h3 class="scondary_heading">Database</h3>
 

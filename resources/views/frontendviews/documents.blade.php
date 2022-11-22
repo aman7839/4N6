@@ -23,7 +23,7 @@
 
                 @foreach ($document as $item)
 
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="doc_card">
                             <div class="doc_icon">
                               

@@ -23,7 +23,7 @@
     <section class="contact_content space pt-0">
         <div class="custom_container ">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-6 col-lg-5">
                     <div class="contact_image">
                         <img src="{{asset('/public/4n61/images/contact_image.jpg')}}" class="img-fluid" alt="contact image">
                     </div>
