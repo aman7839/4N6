@@ -1,12 +1,4 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body> --}}
+
 
     @extends('admin.dashboard.layout.main')
 
@@ -31,7 +23,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h4><a href="{{ url('admin/addusers')}}"  class="btn btn-primary btn-sm mt-2"> <i class="fa fa-plus mr-2"></i> Add Users</a></h4>
-                        {{-- <h4><a href="{{url('/admin/logout')}}" class="btn btn-primary btn-sm mt-3">Logout</a></h4> --}}
                         
                         
                     </div>
@@ -58,7 +49,6 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
-                                    {{-- <td><img src= "images/{{$item->image}}" width="30%" class="img-circle" ></td> --}}
                                     <td><img src= "{{ asset('/public/images/'.$item->image) }}" width="30%" class=" rounded-circle "  title=""></td>
                                   
                                   
@@ -75,7 +65,6 @@
                                         
                                         <a href={{url('admin/deleteuser/'.$item->id)}} class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" ><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
-                                        {{-- <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href={{url('deleteuser/'.$item->id)}} ><i class="fa fa-trash"></i></a> --}}
                                     </td>
                                 </tr>
                                 @endforeach
@@ -101,5 +90,3 @@
    
     @endsection
  
-{{-- </body>
-</html> --}}

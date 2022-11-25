@@ -142,6 +142,21 @@
    <textarea name="summary" id="summary"   class="form-control"cols="50" rows="10  ">{{$data->summary}}</textarea>        
     <span class ="text-danger">@error('summary'){{$message}} @enderror</span>
       </div>
+
+      <div class="form-group mt-3">
+        <label for="book" >  Public: </label> <br>
+
+        <label for="book">  Yes  </label>
+
+        <input type="radio" name ="public" value = '1' {{$data->public == '1'? 'checked' :''}} class="" id="yes" aria-describedby="emailHelp" >
+
+        <label for="book">  No  </label>
+
+        <input type="radio" name ="public" value = '0' {{$data->public == '0'? 'checked' :''}} class="" id="no" aria-describedby="emailHelp" >
+
+        <span class ="text-danger">@error('book'){{$message}} @enderror</span>
+      
+      </div>
     
       <a href="{{url('admin/data')}}" class="btn btn-danger">Cancel</a>
       

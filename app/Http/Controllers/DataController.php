@@ -47,6 +47,8 @@ class DataController extends Controller
                 'type' => 'required',
                 'characters'=>'required',
                 'rating'=>'required',
+                'public'=>'required',
+
                
                 'category_id'=>'required',
 
@@ -80,6 +82,8 @@ class DataController extends Controller
             $data->category_id = $request->category_id;
             $data->characters = $request->characters;
             $data->rating = $request->rating;
+            $data->public = $request->public;
+
             $data->save();
             return redirect('admin/data')->with('success','Data Added Successfully');
 
@@ -139,6 +143,8 @@ class DataController extends Controller
 
             $data->characters = $request->input('characters');
             $data->rating = $request->input('rating');
+            $data->public = $request->input('public');
+
             $data->update();
             return redirect('admin/data')->with('success','Data Updated Successfully');
 

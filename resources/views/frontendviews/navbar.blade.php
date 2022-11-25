@@ -35,18 +35,23 @@
                         <li class="nav-item ">
                             <a class="nav-link {{ request()->is('/') ? 'active' : ''}}" aria-current="page" href="{{url('/')}}">Home</a>
                         </li>
-                        {{-- <li class="nav-item ">
-                            <a class="nav-link {{ request()->is('review') ? 'active' : ''}}" href="#">Review</a>
-                        </li> --}}
+                        <li class="nav-item ">
+                            <a class="nav-link {{ request()->is('regeneratetopics') ? 'active' : ''}}" href="{{url('/regeneratetopics')}}">IDA</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('tutorial') ? 'active' : ''}}" href="{{url('tutorial')}}">Tutorial</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('school') ? 'active' : ''}}" href="{{url('school')}}">Schools</a>
+                            <a class="nav-link {{ request()->is('school') ? 'active' : ''}}" href="{{url('school')}}">4N6 USA</a>
                         </li>
                         <li class="nav-item">
                             
                             <a class="nav-link  {{ request()->is('contactUs') ? 'active' : ''}}" href="{{url('contactUs')}}">Contact Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            
+                            <a class="nav-link  {{ request()->is('demosearch') ? 'active' : ''}}" href="{{url('demosearch')}}">Demo Search</a>
                         </li>
                         <div class="navigates mobile">
                             <a href="#" class="facebook_link"><img src="{{asset('/public/4n61/images/facebook-square.svg')}}"></a>

@@ -29,6 +29,8 @@
 
 
 
+
+
 <script>
 
 
@@ -231,6 +233,8 @@ jQuery(document).ready(function() {
         });
         // Bar Chart #flotBarChart End
     });
+
+    
 </script>
 </body>
 </html>

@@ -184,7 +184,8 @@ class DashboardController extends Controller
             $user = user::where('name', 'Like', '%'.$search. '%' )->orwhere('email', 'Like','%'.$search.'%')->paginate('10');
 
            
-        }else{
+        }
+        else{
 
             $user = User::paginate(10);
 

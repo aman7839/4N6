@@ -9,7 +9,7 @@
             <div class="col-md-12 mt-2">
                 <div class="card">
                     <div class="card-header">
-                        <h4><a href="{{ url('admin/addofferprice')}}"  class="btn btn-primary btn-sm mt-2"> <i class="fa fa-plus mr-2"></i> Add Offers</a></h4>
+                        <h4><a href="{{ url('admin/addofferprice')}}"  class="btn btn-primary btn-sm mt-2"> <i class="fa fa-plus mr-2"></i> Add Offer</a></h4>
                         
                         
                     </div>
@@ -27,8 +27,8 @@
                                     <th>Status</th>
                                     <th>Description</th>
 
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Update Offer</th>
+                                    {{-- <th>Delete</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,11 +50,11 @@
                                         <a href={{url('admin/editofferprice/'.$item->id)}} class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         
                                         <a href={{url('admin/deleteofferprice/'.$item->id)}} class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" ><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a> 
-                                   </td>
+                                   </td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>

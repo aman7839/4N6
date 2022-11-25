@@ -43,7 +43,10 @@
                                     <th>Author</th> 
                                     <th>Category Name</th>                                      
                                     <th>Award Name</th>                                      
-                                    <th>Theme Name</th>                                      
+                                    <th>Theme Name</th>  
+                                    <th>Public</th>  
+
+
                                     
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -62,6 +65,7 @@
 
 
                                     <td>{{ $item->theme['name'] ?? '' }}</td> 
+                                    <td>{{ $item->public ? 'Public' : 'Hidden'  }}</td>
 
 
 

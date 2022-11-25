@@ -98,9 +98,10 @@
                     <li class="nav-item {{ request()->is('admin/users') ? 'active' : ''}}">
                         <a href="{{url('admin/users')}}"><i class="menu-icon fa fa-user"></i>Manage Users </a>
                     </li>
-                    <li class="nav-item {{ request()->is('admin/topics') ? 'active' : ''}}">
-                        <a href="{{url('admin/topics')}}"><i class="menu-icon fa fa-star    "></i> Topics </a>
+                    <li class="nav-item {{ request()->is('admin/offerprice') ? 'active' : ''}}">
+                        <a href="{{url('admin/offerprice')}}"><i class="menu-icon fa fa-star"></i>Offer Price</a>
                     </li>
+                    
                     <li class="nav-item {{ request()->is('admin/documents') ? 'active' : ''}}">
                         <a href="{{url('admin/documents')}}"><i class="menu-icon fa fa-file-text"></i>Manage Documents </a>
                     </li>
@@ -113,9 +114,9 @@
                     <li class="nav-item {{ request()->is('admin/data') ? 'active' : ''}}">
                         <a href="{{url('admin/data')}}"><i class="menu-icon fa fa-table"></i> Manage Data</a>
                     </li>
-                    <li class="nav-item {{ request()->is('admin/messages') ? 'active' : ''}}">  
+                    {{-- <li class="nav-item {{ request()->is('admin/messages') ? 'active' : ''}}">  
                         <a href="{{url('admin/messages')}}"><i class="menu-icon fa fa-commenting-o"></i> Messages</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item {{ request()->is('admin/editProfile') ? 'active' : ''}}">  
                         <a class="nav-link" href="{{url('admin/logout')}}"><i class=" menu-icon fa fa-sign-out"></i>Logout</a>
 

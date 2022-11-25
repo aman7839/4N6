@@ -49,7 +49,7 @@
                              Remember me
                             </label>
                           </div>
-                          <a href="{{url('forget-password')}}">Forget Password</a>
+                          {{-- <a href="{{url('forget-password')}}">Forget Password</a> --}}
                     </div>
                     <div>
                         <button class="cmn_btn">Login</button>

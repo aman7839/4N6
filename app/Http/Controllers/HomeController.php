@@ -7,6 +7,14 @@ use App\Models\states;
 use App\Models\users_guide;
 use App\Models\offerPrice;
 use App\Models\TopicRole;
+use App\Models\awards;
+use App\Models\Theme;
+use App\Models\Data;
+
+use App\Models\playCategory;
+
+
+
 use Carbon\Carbon;
 class HomeController extends Controller
 {
@@ -50,9 +58,9 @@ class HomeController extends Controller
     }
     public function school()
     {
-        $stateAJ = states::where('name', 'regexp',  '^[a-jA-J]')->orderBy('name')->take(5)->get();
-        $stateKN = states::where('name', 'regexp',  '^[k-nK-N]')->orderBy('name')->take(5)->get();
-        $stateOZ = states::where('name', 'regexp',  '^[o-zO-Z]')->orderBy('name')->take(5)->get();
+        $stateAJ = states::where('name', 'regexp',  '^[a-jA-J]')->orderBy('name')->take(10)->get();
+        $stateKN = states::where('name', 'regexp',  '^[k-nK-N]')->orderBy('name')->take(10)->get();
+        $stateOZ = states::where('name', 'regexp',  '^[o-zO-Z]')->orderBy('name')->take(10)->get();
     
 
 
@@ -165,10 +173,60 @@ class HomeController extends Controller
     public function RandomTopics()
     { 
 
-    
-            $topic = TopicRole::all();
+       
+            $location = TopicRole::where('name','location')->inRandomOrder()->limit(3)->get();
+            $situation = TopicRole::where('name','situation')->inRandomOrder()->limit(3)->get();
+            $character = TopicRole::where('name','profession')->inRandomOrder()->limit(3)->get();
 
-            return view('frontendviews.regeneratetopics',compact('topic'));
+
+            return view('frontendviews.regeneratetopics',compact('location','situation','character'));
+        
+    }
+
+    public function demoSearch(Request $request)
+    { 
+
+        
+        $awards = awards::all();
+        $theme = Theme::all();
+        $category = playCategory::all();
+
+        $title = $request['title'] ;
+        $author = $request['author'] ;
+        $type = $request['type'] ;
+        $characters = $request['characters'] ;
+        $award = $request['award_name'] ;
+        $themes = $request['theme_name'] ;
+        $categories = $request['category_name'] ;
+    
+
+
+          $search =  Data::
+          where('title', 'Like', '%'.$title. '%' )
+          ->where('author', 'Like', '%'.$author. '%')
+          ->where('type' ,'Like', '%'.$type. '%')
+          ->where('characters', 'Like' ,$characters)
+          ->when($award , function($q) use($request){
+            return $q->whereHas('awards', function ($query) use ($request) {
+                $query->where('id',$request->award_name);
+            });
+      })
+        ->when($themes , function($q) use($request){
+            return $q->whereHas('theme', function ($query) use ($request) {
+                $query->where('id',$request->theme_name);
+            });
+        })
+        ->when($categories , function($q) use($request){
+            return $q->whereHas('category', function ($query) use ($request) {
+                $query->where('id',$request->category_name);
+            });
+        })
+
+          ->get();
+            
+
+       
+            return view('frontendviews.demosearch',compact('awards', 'award','theme','themes','category', 'categories','search','title','author','type','characters'));
         
     }
 

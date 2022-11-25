@@ -203,6 +203,9 @@ Route::get('/regeneratetopics', [HomeController::class,'RandomTopics']);
 Route::get('/services', [HomeController::class,'services'])->name('user.services');
 Route::get('/login', [HomeController::class,'login'])->middleware('login');
 Route::post('/contactUS', [contactusController::class,'saveContactUs']);
+
+Route::get('/demosearch', [HomeController::class,'demoSearch']);
+
 Route::get('/logout', [userController::class, 'logout']);
 
 
@@ -228,6 +231,7 @@ Route::put('/updateProfile/{id}', [DashboardController::class, 'updateprofile'])
 
 
 });
+
 });
 
 
